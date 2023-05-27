@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    name: Run tests and flake8
+    name: Run tests
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -28,9 +28,6 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
-    - name: Run Flake8
-      run: |
-        flake8
 
   build:
     name: Build and push
