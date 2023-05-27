@@ -1,0 +1,72 @@
+#####################################################
+
+1)Вывести первый курс
+
+In [2]: models.Course.objects.all().first()
+Out[2]: <Course: C++>
+
+#####################################################
+
+2)Посчитать количество курсов
+
+In [3]: models.Course.objects.all().count()
+Out[3]: 3
+
+#####################################################
+
+3)Посчитать среднюю зарплату у учителя
+
+In [4]: models.Teacher.objects.aggregate(Avg("salary"))
+Out[4]: {'salary__avg': 52500.0}
+
+#####################################################
+
+4)Посчитать количество студентов на всех курсах
+
+In [5]: models.Student.objects.all().count()
+Out[5]: 2
+
+#####################################################
+
+5) Создать новый курс по JS
+
+In [6]:
+Out[6]: <Course: JS>
+
+#####################################################
+
+6) Добавить нового преподавателя
+
+In [7]: models.Teacher.objects.create(name="Ivan", salary="60000")
+Out[7]: <Teacher: Ivan>
+
+#####################################################
+
+7) Вывести преподавателей у которых зп больше или равна 54 т.
+
+In [9]: models.Teacher.objects.filter(salary__gte=54000)
+Out[9]: <QuerySet [<Teacher: Name2>, <Teacher: Ivan>]>
+
+#####################################################
+
+8) Вывести все курсы в которых содержитеся бука J
+
+In [12]: models.Course.objects.filter(name__contains="J")
+Out[12]: <QuerySet [<Course: Java>, <Course: JS>]>
+
+#####################################################
+
+9) Вывести преподавателей с name в поле имени
+
+In [13]: models.Teacher.objects.filter(name__contains="name")
+Out[13]: <QuerySet [<Teacher: Name1>, <Teacher: Name2>]>
+
+#####################################################
+10) Найти разницу в стоимости самного дорого и самого бюджетного курса
+
+In [39]: max = models.Course.objects.aggregate(Max('price'))
+In [40]: min = models.Course.objects.aggregate(Min('price'))
+In [43]: int(max.get("price__max")) - int(min.get("price__min"))
+Out[43]: 50000
+
+#####################################################

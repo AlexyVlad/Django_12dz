@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="GET">
+        {{ filter.form.name.label }}<br>{{ filter.form.name }}
+        <br><br><button type="submit">Поиск</button>
+    </form>
+
+{% for сourse in object_list %}
+        <li>{{ сourse.name }} (<a href="course/{{ сourse.id }}">Перейти</a>)</li>
+{% empty %}
+    <ol>Список пуст</ol>
+{% endfor %}
+
+        <a href="course/add_course">Добавить курс</a> <br>
+        <a href="/">Назад</a>
+{% endblock %}

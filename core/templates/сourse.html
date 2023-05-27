@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Курс по {{ object.name }}</p>
+    <p>Стоимость курса {{ object.price }}</p>
+    <a href="update/{{ object.id }}">Редактировать курс</a> <br><br>
+    <a href="delete_course/{{ object.id }}">Удалить курс</a> <br><br>
+    <a href="/courses">Назад</a>
+{% endblock %}
