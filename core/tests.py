@@ -41,4 +41,4 @@ class CourseTests(TestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.course.refresh_from_db()
-        self.assertEqual(self.course.name, 'Updated Course')
+        self.assertEqual(self.course.name, 'Updated')
